@@ -50,10 +50,11 @@ function buildNormalizedDictionary(dictionary) {
   return result;
 }
 
+let queryNumber = 0;
+
 /**
  * Normalizes and runs a single Query for given Normalized Dictionary
  */
-let queryNumber = 0;
 function runSingleQuery(normalizedDictionary, query) {
   let result = false;
   let word1;
@@ -87,7 +88,6 @@ function runSingleQuery(normalizedDictionary, query) {
 /**
  * Runs set of Queries for given Normalized Dictionary
  */
-
 function runAllQueries(normalizedDictionary, queries) {
   const result = [];
   for (const query of queries) {
@@ -120,7 +120,7 @@ let tests = JSON.parse(fs.readFileSync('input.json', 'utf8'));
 console.log('Test cases:', tests?.testCases?.length);
 console.log(
   'Number of queries:',
-  tests?.testCases?.reduce((acc, cur) => acc + cur.queries.length, 0)
+  tests?.testCases?.reduce((acc, cur) => acc + cur?.queries?.length, 0)
 );
 
 const result = runTestCases(tests);
